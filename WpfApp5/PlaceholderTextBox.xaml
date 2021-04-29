@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="WpfApp5.PlaceholderTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp5"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Name="UC">
+    <Grid>
+
+        <TextBlock Text="{Binding ElementName=UC, Path=PlaceholderText}" Margin="5, 0, 0, 0"
+
+                   Foreground="DarkGray">
+
+            <TextBlock.Style>
+                       <Style TargetType="TextBlock">
+                           
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=TxtBxPlaceholder, Path=Text}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                           
+                       </Style>
+                   </TextBlock.Style>
+                   
+                   </TextBlock>
+        
+        <TextBox Name="TxtBxPlaceholder" Background="{Binding ElementName=UC, Path=Background}" Width="{Binding ElementName=UC, Path=Width}"
+                 Text="{Binding ElementName=UC, Path=Text}" AcceptsReturn="{Binding ElementName=UC, Path=AcceptReturn}">
+            
+        </TextBox>
+            
+    </Grid>
+</UserControl>
